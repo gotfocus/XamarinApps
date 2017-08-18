@@ -1,0 +1,69 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:CaSI"
+             x:Class="CaSI.Views.HomePage">
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style x:Key="buttonStyle" TargetType="Button">
+                <Setter Property="BorderColor" Value="Transparent" />
+                <Setter Property="BorderRadius" Value="4" />
+                <Setter Property="BorderWidth" Value="0" />
+                <Setter Property="BackgroundColor" Value="Transparent" />
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentView x:Name="MainView">
+        <StackLayout BackgroundColor="White"
+                    HorizontalOptions="StartAndExpand">
+            <StackLayout BackgroundColor="White"
+                     Padding="5"
+                     HorizontalOptions="Center">
+                <Label Text=" Cognition and Speech Interface" TextColor="#FF633B" FontAttributes="Bold" FontSize="Medium"></Label>
+            </StackLayout>
+            <StackLayout BackgroundColor="White"
+                     Padding="5"
+                     HorizontalOptions="Center">
+                <Button x:Name="record" FontSize="Small" Text="" TextColor="#000000" Image="record.png" Style="{StaticResource buttonStyle}" Clicked="Record_OnClick"></Button>
+                <Button x:Name="recording" FontSize="Small" Text="" TextColor="#000000" Image="recording.png" IsVisible="False" Style="{StaticResource buttonStyle}"  Clicked="Record_OnClick"></Button>
+            </StackLayout>            
+            <StackLayout x:Name="navlayout" BackgroundColor="White" IsVisible="False"
+                     Padding="5" Orientation="Horizontal"
+                     HorizontalOptions="Center">
+                <Button x:Name="converseButton" FontSize="Small" Text=" Converation " TextColor="#000000" BackgroundColor="LightBlue" Style="{StaticResource buttonStyle}"></Button>
+                <Label Text=" " />
+                <Button x:Name="controlsButton" FontSize="Small" Text=" Controls " TextColor="#000000"  BackgroundColor="LightBlue" Style="{StaticResource buttonStyle}"></Button>
+            </StackLayout>
+			<StackLayout x:Name="controlslayout" BackgroundColor="White" IsVisible="False"
+                     Padding="10"
+                     VerticalOptions="Start">
+			</StackLayout>
+            <StackLayout x:Name="listviewlayout" BackgroundColor="White" IsVisible="True"
+                     Padding="10"
+                      VerticalOptions="FillAndExpand"
+                     HorizontalOptions="FillAndExpand">
+                <ListView x:Name="SpeechList" VerticalOptions="FillAndExpand">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <StackLayout BackgroundColor="White" Orientation="Vertical">
+                                    <StackLayout Orientation="Horizontal" Padding="5" Spacing="5">
+                                        <Label  Text="{Binding Speaker}" />
+                                        <Label  Text=": " />
+                                        <Label  FontAttributes="None" Text="{Binding SpeechText}" TextColor="#282828" />
+                                    </StackLayout>
+                                    <StackLayout BackgroundColor="Silver"
+										HeightRequest="1"
+										HorizontalOptions="FillAndExpand">
+                                    </StackLayout>
+                                </StackLayout>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </StackLayout>
+        </StackLayout>
+        <!-- </ContentView> -->
+    </ContentView>
+</ContentPage>
